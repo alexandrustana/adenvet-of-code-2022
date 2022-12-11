@@ -29,3 +29,32 @@ object Client extends App {
 }
 ' > $1/src/main/scala/Client.scala
 echo 'AOC' > $1/src/main/resources/input.txt
+echo '
+version = "3.4.3"
+runner.dialect = scala213
+align.preset = some
+maxColumn = 120
+
+align.tokens = [
+  {code = "%", owner = "Term.ApplyInfix"},
+  {code = "%%", owner = "Term.ApplyInfix"},
+  {code = ":=", owner = "Term.ApplyInfix"},
+  {code = "=>", owner = "Case"}
+]
+
+align.openParenCallSite = false
+
+newlines.topLevelStatements = [before]
+newlines.beforeMultiline = keep
+newlines.topLevelStatementsMinBreaks = 1
+
+optIn.breakChainOnFirstMethodDot = true
+
+continuationIndent.defnSite = 2
+
+verticalMultiline.atDefnSite = true
+verticalMultiline.arityThreshold = 3
+verticalMultiline.newlineAfterOpenParen = true
+
+danglingParentheses.callSite = false
+' > $1/.scalafmt.conf
